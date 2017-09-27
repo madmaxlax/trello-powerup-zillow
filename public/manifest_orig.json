@@ -1,0 +1,27 @@
+{
+  "name": "Zillow Power Up",
+  "details":"The [Zillow](https://www.zillow.com/howto/api/APIOverview.htm#) Power-Up allows you to add information from Zillow listings to your card",
+  "icon": {
+    "url": "https://cdn.glitch.com/e9cc67bf-caf4-45ed-bf25-038b934ac87c%2FZillowlogo_200x50.gif?1505250295710"
+  },
+  "author": "Maxwell Struever",
+  "capabilities": [
+    //"authorization-status",
+    //"attachment-sections",
+    //"attachment-thumbnail",
+    "board-buttons",
+    "callback",
+    "card-badges",
+    "card-buttons",
+    "card-detail-badges",
+    //"card-from-url",
+    //"format-url",
+    //"show-authorization",
+    //"show-settings"
+  ],
+  "connectors": {
+    "iframe": {
+      "url": "./index.html"
+    }
+  }
+}

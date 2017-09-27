@@ -1,0 +1,28 @@
+{
+  "name": "zillow-power-up",
+  "version": "0.0.1",
+  "description": "A power up for Trello that uses the Zillow API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "xml2js": "^0.4.19",
+    "node-sass-middleware": "^0.11.0",
+    "request": "^2.81.0"
+  },
+  "engines": {
+    "node": "4.4.5"
+  },
+  "keywords": [
+    "node",
+    "hyperdev",
+    "express",
+    "zillow",
+    "trello"
+  ],
+  "license": "MIT"
+}
