@@ -20,6 +20,10 @@ MADE_WITH=
 zwsid=xxxAPIxxKEYxxx
 ```
 
+---
+
+this power-up is actually hosted by glitch
+https://glitch.com/edit/#!/zillow-trello-powerup
 
 ---
 
@@ -30,7 +34,3 @@ Want more information about Power-Ups? 🤔
 We even have office hours you can sign up for if you want to talk to a real live person about your Power-Up. Just grab a slot that works for you on this [calendar](https://calendar.google.com/calendar/selfsched?sstoken=UU5DczNLUkNIbk5ifGRlZmF1bHR8YzJmZWM4YWM0NTgxMTE1NmRmMzgxNzMwODRjYzEwZGU). (Remember to add a bit about what you'd like help with when signing up for a slot).
 
 ---
-
-Looking for a more _realistic_ example Power-Up? You may find the Trello Card Snooze Power-Up useful. 😴
-
-👉  [Trello Card Snooze Glitch Project](https://glitch.com/edit/#!/trellocardsnooze)
