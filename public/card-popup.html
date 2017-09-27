@@ -1,0 +1,81 @@
+<html lang="en" ng-app="myapp" ng-controller="appController as ctrlr">
+  <head>
+    <link rel="stylesheet" href="https://trello.com/power-ups/power-up.css">
+    <link rel="stylesheet" href="./css/card-popup.css">
+    <script src="https://trello.com/power-ups/power-up.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  </head>
+  <body>
+    <div id="content" style="overflow:visible">
+      <form ng-submit="saveAndLookup()" ng-if="hasWriteAccess()">
+        
+<!--       <h3>        Zillow property lookup      </h3> -->
+        <p>
+        Do you want Rent or Buy data?
+      </p>
+      <label>
+        <input type="radio" ng-model="userInput.rentOrBuy" value="rent" ng-click="allowOverflow()"> Rent
+      </label>
+      <label>
+        <input type="radio" ng-model="userInput.rentOrBuy" value="buy" ng-click="allowOverflow()"> Buy
+      </label>
+      <p>
+        How do you want to lookup the Zillow Property
+      </p>
+      <label>
+        <input type="radio" ng-model="userInput.zillowLookupType" value="address" ng-click="allowOverflow()"> Address
+      </label>
+      <label title="NOTE YET IMPLEMENTED &#013;A zpid for a property. Example zpid: 38882773" style="text-decoration: line-through">
+        <input type="radio" ng-model="userInput.zillowLookupType" value="zpid" ng-disabled="true" ng-click="allowOverflow()"> Zillow ID (zpid)
+      </label>
+      <section ng-show="userInput.zillowLookupType==='address'">
+      <hr>
+      <p>
+        Address:
+      </p>
+      <input type="text" ng-model="userInput.address" ng-disabled="userInput.zillowLookupType==='zpid'" ng-click="userInput.zillowLookupType='address'">
+      <p>
+        Search by City/State or Zip code?
+      </p>
+      <label>
+        <input type="radio" ng-model="userInput.addressSearchType" value="cityState" ng-disabled="userInput.zillowLookupType==='zpid'"> City/State
+      </label>
+      <input type="text" placeholder="City" ng-model="userInput.city" class="city" ng-disabled="userInput.zillowLookupType==='zpid' || userInput.addressSearchType==='zipcode'"  ng-click="userInput.addressSearchType='cityState'">
+      <input type="text" placeholder="ST" ng-model="userInput.state" maxlenght="2" class="state" ng-disabled="userInput.zillowLookupType==='zpid' || userInput.addressSearchType==='zipcode'" ng-click="userInput.addressSearchType='cityState'"> 
+      <br/>
+      <!--       or zip -->
+      <label>
+        <input type="radio" ng-model="userInput.addressSearchType" value="zipcode" ng-disabled="userInput.zillowLookupType==='zpid'"> Zipcode 
+      </label> <input type="text" placeholder="zipcode" ng-model="userInput.zipcode" maxlenght="10" class="zipcode" ng-disabled="userInput.zillowLookupType==='zpid'  || userInput.addressSearchType==='cityState'" ng-click="userInput.addressSearchType='zipcode'">
+      </section>
+      
+      
+      <section ng-show="userInput.zillowLookupType==='zpid'">      
+      <hr>
+      <p>
+        Zillow ID (zpid)
+      </p>
+      <input type="text" placeholder="zpid (usually 8 digits ex: 38882773)" maxlenght="10" class="" ng-disabled="userInput.zillowLookupType==='address'" ng-click="userInput.zillowLookupType='zpid'">
+      </section>
+      <hr>
+
+      <blockquote id="saveInputResult">{{messages.saveInputResult}}</blockquote>
+        <blockquote id="errorMessage" ng-if="!(zillowInfo['SearchResults:searchresults'].response.results)">Zillow: {{zillowInfo['SearchResults:searchresults'].message.text}}</blockquote>
+      <blockquote id="zillowResult" ng-if="zillowInfo['SearchResults:searchresults'].response.results">
+        {{messages.zillowResult}}
+<!--         {{zillowInfo['SearchResults:searchresults'].response.results.result}} -->
+        Estimated Value or Rent: {{(userInput.rentOrBuy==='buy'?(zillowInfo['SearchResults:searchresults'].response.results.result.zestimate.amount["_"]):(zillowInfo['SearchResults:searchresults'].response.results.result.rentzestimate.amount["_"])) | currency:'$':0}}
+        </blockquote>
+      <button id="save" class="mod-primary" type="submit">Save and Lookup on Zillow</button>
+      Links
+        <ul>
+          <li ng-repeat="(name, url) in zillowInfo['SearchResults:searchresults'].response.results.result.links"><a target="_blank" ng-href="{{url}}">{{name}}</a></li>
+        </ul>
+      </form>
+      <div ng-if="!hasWriteAccess()">
+        You do not have write-access to this card or Trello board, so you cannot change the settings of the powerup
+      </div>
+    </div>
+    <script src="./js/card-popup.js"></script>
+  </body>
+</html>
