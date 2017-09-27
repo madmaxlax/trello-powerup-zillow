@@ -6,7 +6,7 @@ This power-up makes use of the Zillow API for house values/rentals.
 
 
 
-**NOTE**: unfortunately, zillow isn't able to "redistribe" a lot (most) of their data, [explanation here](https://www.zillow.com/advice-thread/501-on-GetUpdatedPropertyDetails/374287/), so all values are **[ZESTIMATES](https://www.zillow.com/zestimate/)** and not the actual listed values
+**NOTE**: unfortunately, zillow isn't able to "redistribute" a lot (most) of their data, [explanation here](https://www.zillow.com/advice-thread/501-on-GetUpdatedPropertyDetails/374287/), so all values are **[ZESTIMATES](https://www.zillow.com/zestimate/)** and not the actual listed values
 so this API and power up isn't as cool as I was hoping it would be. also annoying that Zillow has its API in XML and not JSON format, but that is easily solved by the [xml2js npm package](https://www.npmjs.com/package/xml2js)
 
 Getting started:
